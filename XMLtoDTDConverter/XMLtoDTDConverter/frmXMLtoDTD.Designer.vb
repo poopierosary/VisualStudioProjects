@@ -27,7 +27,13 @@ Partial Class frmXMLtoDTD
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.txtDisplayXML = New System.Windows.Forms.TextBox()
         Me.ofdInputXMLFiles = New System.Windows.Forms.OpenFileDialog()
+        Me.btnConvert = New System.Windows.Forms.Button()
+        Me.grpbOutputDTD = New System.Windows.Forms.GroupBox()
+        Me.txtOutputDTD = New System.Windows.Forms.TextBox()
+        Me.txtOutputFilePath = New System.Windows.Forms.TextBox()
+        Me.btnSavefile = New System.Windows.Forms.Button()
         Me.grpbInputXML.SuspendLayout()
+        Me.grpbOutputDTD.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpbInputXML
@@ -82,16 +88,73 @@ Partial Class frmXMLtoDTD
         Me.ofdInputXMLFiles.Filter = "XML Fiels|*.xml|All Files|*.*"
         Me.ofdInputXMLFiles.Title = "Open XML File"
         '
+        'btnConvert
+        '
+        Me.btnConvert.Location = New System.Drawing.Point(169, 253)
+        Me.btnConvert.Name = "btnConvert"
+        Me.btnConvert.Size = New System.Drawing.Size(208, 23)
+        Me.btnConvert.TabIndex = 1
+        Me.btnConvert.Text = "Convert To DTD"
+        Me.btnConvert.UseVisualStyleBackColor = True
+        '
+        'grpbOutputDTD
+        '
+        Me.grpbOutputDTD.Controls.Add(Me.btnSavefile)
+        Me.grpbOutputDTD.Controls.Add(Me.txtOutputFilePath)
+        Me.grpbOutputDTD.Controls.Add(Me.txtOutputDTD)
+        Me.grpbOutputDTD.Location = New System.Drawing.Point(12, 282)
+        Me.grpbOutputDTD.Name = "grpbOutputDTD"
+        Me.grpbOutputDTD.Size = New System.Drawing.Size(710, 187)
+        Me.grpbOutputDTD.TabIndex = 2
+        Me.grpbOutputDTD.TabStop = False
+        Me.grpbOutputDTD.Text = "Output DTD File"
+        '
+        'txtOutputDTD
+        '
+        Me.txtOutputDTD.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtOutputDTD.BackColor = System.Drawing.Color.White
+        Me.txtOutputDTD.Location = New System.Drawing.Point(6, 19)
+        Me.txtOutputDTD.Multiline = True
+        Me.txtOutputDTD.Name = "txtOutputDTD"
+        Me.txtOutputDTD.ReadOnly = True
+        Me.txtOutputDTD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtOutputDTD.Size = New System.Drawing.Size(698, 124)
+        Me.txtOutputDTD.TabIndex = 0
+        '
+        'txtOutputFilePath
+        '
+        Me.txtOutputFilePath.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtOutputFilePath.Location = New System.Drawing.Point(6, 161)
+        Me.txtOutputFilePath.Name = "txtOutputFilePath"
+        Me.txtOutputFilePath.Size = New System.Drawing.Size(486, 20)
+        Me.txtOutputFilePath.TabIndex = 1
+        '
+        'btnSavefile
+        '
+        Me.btnSavefile.Location = New System.Drawing.Point(498, 159)
+        Me.btnSavefile.Name = "btnSavefile"
+        Me.btnSavefile.Size = New System.Drawing.Size(206, 23)
+        Me.btnSavefile.TabIndex = 2
+        Me.btnSavefile.Text = "Save DTD File"
+        Me.btnSavefile.UseVisualStyleBackColor = True
+        '
         'frmXMLtoDTD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(734, 537)
+        Me.Controls.Add(Me.grpbOutputDTD)
+        Me.Controls.Add(Me.btnConvert)
         Me.Controls.Add(Me.grpbInputXML)
         Me.Name = "frmXMLtoDTD"
         Me.Text = "XML to DTD Converter"
         Me.grpbInputXML.ResumeLayout(False)
         Me.grpbInputXML.PerformLayout()
+        Me.grpbOutputDTD.ResumeLayout(False)
+        Me.grpbOutputDTD.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -101,4 +164,9 @@ Partial Class frmXMLtoDTD
     Friend WithEvents txtDisplayXML As TextBox
     Friend WithEvents btnBrowse As Button
     Friend WithEvents ofdInputXMLFiles As OpenFileDialog
+    Friend WithEvents btnConvert As Button
+    Friend WithEvents grpbOutputDTD As GroupBox
+    Friend WithEvents txtOutputFilePath As TextBox
+    Friend WithEvents txtOutputDTD As TextBox
+    Friend WithEvents btnSavefile As Button
 End Class
