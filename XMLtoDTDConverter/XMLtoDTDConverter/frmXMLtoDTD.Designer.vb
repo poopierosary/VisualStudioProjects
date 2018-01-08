@@ -24,11 +24,15 @@ Partial Class frmXMLtoDTD
     Private Sub InitializeComponent()
         Me.grpbInputXML = New System.Windows.Forms.GroupBox()
         Me.txtInputPath = New System.Windows.Forms.TextBox()
+        Me.btnBrowse = New System.Windows.Forms.Button()
+        Me.txtDisplayXML = New System.Windows.Forms.TextBox()
         Me.grpbInputXML.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpbInputXML
         '
+        Me.grpbInputXML.Controls.Add(Me.txtDisplayXML)
+        Me.grpbInputXML.Controls.Add(Me.btnBrowse)
         Me.grpbInputXML.Controls.Add(Me.txtInputPath)
         Me.grpbInputXML.Location = New System.Drawing.Point(12, 74)
         Me.grpbInputXML.Name = "grpbInputXML"
@@ -46,6 +50,32 @@ Partial Class frmXMLtoDTD
         Me.txtInputPath.Size = New System.Drawing.Size(486, 20)
         Me.txtInputPath.TabIndex = 0
         '
+        'btnBrowse
+        '
+        Me.btnBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBrowse.Location = New System.Drawing.Point(498, 17)
+        Me.btnBrowse.Name = "btnBrowse"
+        Me.btnBrowse.Size = New System.Drawing.Size(206, 23)
+        Me.btnBrowse.TabIndex = 1
+        Me.btnBrowse.Text = "Browse File"
+        Me.btnBrowse.UseVisualStyleBackColor = True
+        '
+        'txtDisplayXML
+        '
+        Me.txtDisplayXML.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtDisplayXML.BackColor = System.Drawing.Color.White
+        Me.txtDisplayXML.Font = New System.Drawing.Font("Courier New", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDisplayXML.Location = New System.Drawing.Point(6, 45)
+        Me.txtDisplayXML.Multiline = True
+        Me.txtDisplayXML.Name = "txtDisplayXML"
+        Me.txtDisplayXML.ReadOnly = True
+        Me.txtDisplayXML.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtDisplayXML.Size = New System.Drawing.Size(698, 122)
+        Me.txtDisplayXML.TabIndex = 2
+        Me.txtDisplayXML.WordWrap = False
+        '
         'frmXMLtoDTD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -62,4 +92,6 @@ Partial Class frmXMLtoDTD
 
     Friend WithEvents grpbInputXML As GroupBox
     Friend WithEvents txtInputPath As TextBox
+    Friend WithEvents txtDisplayXML As TextBox
+    Friend WithEvents btnBrowse As Button
 End Class
