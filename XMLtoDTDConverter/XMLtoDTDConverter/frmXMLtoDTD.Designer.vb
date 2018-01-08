@@ -26,6 +26,7 @@ Partial Class frmXMLtoDTD
         Me.txtInputPath = New System.Windows.Forms.TextBox()
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.txtDisplayXML = New System.Windows.Forms.TextBox()
+        Me.ofdInputXMLFiles = New System.Windows.Forms.OpenFileDialog()
         Me.grpbInputXML.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -76,6 +77,11 @@ Partial Class frmXMLtoDTD
         Me.txtDisplayXML.TabIndex = 2
         Me.txtDisplayXML.WordWrap = False
         '
+        'ofdInputXMLFiles
+        '
+        Me.ofdInputXMLFiles.Filter = "XML Fiels|*.xml|All Files|*.*"
+        Me.ofdInputXMLFiles.Title = "Open XML File"
+        '
         'frmXMLtoDTD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -94,4 +100,5 @@ Partial Class frmXMLtoDTD
     Friend WithEvents txtInputPath As TextBox
     Friend WithEvents txtDisplayXML As TextBox
     Friend WithEvents btnBrowse As Button
+    Friend WithEvents ofdInputXMLFiles As OpenFileDialog
 End Class
