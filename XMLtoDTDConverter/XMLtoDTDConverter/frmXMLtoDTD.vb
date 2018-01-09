@@ -195,4 +195,56 @@ TryAgain:       If ArrParentNodes.Contains(newName) = True Then
             getCDataElement = ""
         End Try
     End Function
+
+    Private Function printNode(ByVal node As Xml.XmlNode) As Boolean
+        Try
+            Dim qualName As String = getParentElement(node)
+
+            If qualName <> "" Then
+                Dim childElement As String = ""
+                Dim prefix As String = ""
+                Dim lineOne As String = String.Format("{0}{1}", "<!ELEMENT ", qualName)
+                Dim lineTwo As String = String.Format("{0}", "(")
+                Dim lineLast As String = String.Format("{0}", ")>")
+
+                ArrAllElements.Add(qualName)
+                ArrParentNodes.Add(qualName)
+
+                sb.Append(lineOne)
+                sb.Append(lineTwo)
+                For Each chd As Xml.XmlNode In node.ChildNodes
+                    If chd.NodeType = Xml.XmlNodeType.Element Then
+                        Dim lineChd As String = String.Format("{0}{1}", prefix, childElement)
+                        sb.Append(lineChd)
+                        prefix = "    ,"
+                        ArrAllElements.Add(childElement)
+                        ArrPrintedChildren.Add(childElement)
+                    End If
+                Next
+                sb.AppendLine(lineLast)
+                sb.AppendLine()
+
+                Return True
+            Else
+                Return False
+            End If
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Private Function printCData(ByVal Arrl As ArrayList) As Boolean
+        Try
+            Dim xmlField As String
+
+            For Each name As String In Arrl
+                xmlField = String.Format("{0}{1,-40}{2}", "<!ELEMENT ", name, " (#PCDATA)>")
+                sb.AppendLine(xmlField)
+            Next
+            Return True
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 End Class
