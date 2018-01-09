@@ -11,6 +11,13 @@
 
     Private sb As System.Text.StringBuilder
 
+    Private Enum enumXMLActionType
+        Failed = 0
+        Enum_PrintwChildren = 1
+        Enum_PrintAsCData = 2
+        Enum_Ignore = 3
+    End Enum
+
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
 
         Try
@@ -59,6 +66,72 @@
         End Try
     End Function
 
+    Private Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btnConvert.Click
+        Try
+            ArrAllElements.Clear()
+            ArrParentNodes.Clear()
+            ArrPrintedChildren.Clear()
+            XMLdoc.Load(InputFilePath)
+            sb = New System.Text.StringBuilder
 
+            If XMLdoc.HasChildNodes = True Then
+                For Each nd As Xml.XmlNode In XMLdoc.ChildNodes
+                    If nd.NodeType = Xml.XmlNodeType.Element Then
+
+                    End If
+                Next
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Function nodeProcess(ByVal Node As Xml.XmlNode) As Boolean
+        Try
+            Dim nodeAcction As enumXMLActionType = getNode(Node)
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+    Private Function getNode(ByVal nd As Xml.XmlNode) As enumXMLActionType
+        Try
+            Dim isParentElemet As Boolean = False
+
+            If nd.HasChildNodes = True Then
+                Dim numEle As Integer = 0
+                For Each node As Xml.XmlNode In nd.ChildNodes
+                    If node.NodeType = Xml.XmlNodeType.Element Then
+                        If node.HasChildNodes Then
+                            If node.FirstChild.NodeType = Xml.XmlNodeType.Element Then
+                                isParentElemet = True
+                            End If
+                        End If
+                        numEle += 1
+                        If numEle = 2 Then
+                            getNode = enumXMLActionType.Enum_PrintwChildren
+                            Exit Function
+                        End If
+                    End If
+                Next
+                If isParentElemet = True Then
+                    getNode = enumXMLActionType.Enum_PrintwChildren
+                Else
+                    getNode = enumXMLActionType.Enum_PrintAsCData
+                End If
+            Else
+                If nd.NodeType = Xml.XmlNodeType.Element Then
+                    getNode = enumXMLActionType.Enum_PrintAsCData
+                Else
+                    getNode = enumXMLActionType.Enum_Ignore
+                End If
+            End If
+
+        Catch ex As Exception
+            getNode = enumXMLActionType.Failed
+            sb.AppendLine("Somethign happened here" & nd.Name)
+            sb.AppendLine()
+        End Try
+    End Function
 
 End Class
