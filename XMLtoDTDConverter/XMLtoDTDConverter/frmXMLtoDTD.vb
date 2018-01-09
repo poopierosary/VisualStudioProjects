@@ -134,4 +134,65 @@
         End Try
     End Function
 
+    Private Function getParentElement(ByVal nd As Xml.XmlNode) As String
+        Try
+            Dim newName As String = nd.LocalName
+            Dim oldName As String = newName
+            Dim cnt As Integer = 0
+
+TryAgain:   If ArrParentNodes.Contains(newName) = True Then
+                cnt += 1
+                newName = oldName & cnt.ToString
+                GoTo TryAgain
+            End If
+
+            getParentElement = newName
+        Catch ex As Exception
+            getParentElement = ""
+        End Try
+    End Function
+
+    Private Function getChildElement(ByVal nd As Xml.XmlNode) As String
+        Try
+            Try
+                Dim newName As String = nd.LocalName
+                Dim oldName As String = newName
+                Dim cnt As Integer = 0
+
+TryAgain:       If ArrParentNodes.Contains(newName) = True Then
+                    cnt += 1
+                    newName = oldName & cnt.ToString
+                    GoTo TryAgain
+                End If
+
+                getChildElement = newName
+            Catch ex As Exception
+                getChildElement = ""
+            End Try
+        Catch ex As Exception
+            getChildElement = ""
+        End Try
+    End Function
+
+    Private Function getCDataElement(ByVal nd As Xml.XmlNode) As String
+        Try
+            Try
+                Dim newName As String = nd.LocalName
+                Dim oldName As String = newName
+                Dim cnt As Integer = 0
+
+TryAgain:       If ArrParentNodes.Contains(newName) = True Then
+                    cnt += 1
+                    newName = oldName & cnt.ToString
+                    GoTo TryAgain
+                End If
+
+                getCDataElement = newName
+            Catch ex As Exception
+                getCDataElement = ""
+            End Try
+        Catch ex As Exception
+            getCDataElement = ""
+        End Try
+    End Function
 End Class
