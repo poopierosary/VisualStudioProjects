@@ -18,6 +18,17 @@
         Enum_Ignore = 3
     End Enum
 
+    Public Function OpenForm() As Boolean
+        Try
+            btnConvert.Enabled = False
+            Me.Show()
+
+        Catch ex As Exception
+            Return False
+
+        End Try
+    End Function
+
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
 
         Try
@@ -38,7 +49,7 @@
             If InputFilePath <> "" Then
                 txtInputPath.Text = InputFilePath
                 LoadInputFile()
-
+                btnConvert.Enabled = True
             End If
         Catch ex As Exception
 
@@ -47,6 +58,7 @@
 
     Private Sub LoadInputFile()
         Try
+            txtOutputDTD.Text = ""
             txtDisplayXML.Text = LoadXMLFile(InputFilePath)
         Catch ex As Exception
 
@@ -110,6 +122,10 @@
                 Case enumXMLActionType.Enum_Ignore
 
                 Case enumXMLActionType.Failed
+                    If MsgBox("Translation failed at Element: " & Node.Name & Chr(13) &
+                            "Would you like to continue processing?", MsgBoxStyle.YesNo, "Translation Failed") = MsgBoxResult.No Then
+                        Exit Function
+                    End If
 
             End Select
             Return True
@@ -178,21 +194,18 @@ TryAgain:   If ArrParentNodes.Contains(newName) = True Then
 
     Private Function getChildElement(ByVal nd As Xml.XmlNode) As String
         Try
-            Try
-                Dim newName As String = nd.LocalName
-                Dim oldName As String = newName
-                Dim cnt As Integer = 0
+            Dim newName As String = nd.LocalName
+            Dim oldName As String = newName
+            Dim cnt As Integer = 0
 
-TryAgain:       If ArrParentNodes.Contains(newName) = True Then
-                    cnt += 1
-                    newName = oldName & cnt.ToString
-                    GoTo TryAgain
-                End If
+TryAgain:   If ArrParentNodes.Contains(newName) = True Then
+                cnt += 1
+                newName = oldName & cnt.ToString
+                GoTo TryAgain
+            End If
 
-                getChildElement = newName
-            Catch ex As Exception
-                getChildElement = ""
-            End Try
+            getChildElement = newName
+
         Catch ex As Exception
             getChildElement = ""
         End Try
@@ -200,21 +213,24 @@ TryAgain:       If ArrParentNodes.Contains(newName) = True Then
 
     Private Function getCDataElement(ByVal nd As Xml.XmlNode) As String
         Try
-            Try
-                Dim newName As String = nd.LocalName
-                Dim oldName As String = newName
-                Dim cnt As Integer = 0
+            Dim newName As String = nd.LocalName
+            Dim oldName As String = newName
+            Dim cnt As Integer = 0
 
-TryAgain:       If ArrParentNodes.Contains(newName) = True Then
-                    cnt += 1
-                    newName = oldName & cnt.ToString
-                    GoTo TryAgain
-                End If
+TryAgain:   If ArrParentNodes.Contains(newName) = True Then
+                cnt += 1
+                newName = oldName & cnt.ToString
+                GoTo TryAgain
+            End If
+            'If ArrPrintedChildren.Contains(newName) = True Then
+            '    '  ArrPrintedChildren.Remove(newName)
+            '    getCDataElement = newName
+            'Else
+            '    cnt += 1
+            '    newName = oldName & cnt.ToString
+            '    GoTo TryAgain
 
-                getCDataElement = newName
-            Catch ex As Exception
-                getCDataElement = ""
-            End Try
+            'End If
         Catch ex As Exception
             getCDataElement = ""
         End Try
@@ -226,7 +242,7 @@ TryAgain:       If ArrParentNodes.Contains(newName) = True Then
 
             If qualName <> "" Then
                 Dim childElement As String = ""
-                Dim prefix As String = ""
+                Dim prefix As String = "     "
                 Dim lineOne As String = String.Format("{0}{1}", "<!ELEMENT ", qualName)
                 Dim lineTwo As String = String.Format("{0}", "(")
                 Dim lineLast As String = String.Format("{0}", ")>")

@@ -32,6 +32,9 @@ Partial Class frmXMLtoDTD
         Me.btnSavefile = New System.Windows.Forms.Button()
         Me.txtOutputFilePath = New System.Windows.Forms.TextBox()
         Me.txtOutputDTD = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.grpbInputXML.SuspendLayout()
         Me.grpbOutputDTD.SuspendLayout()
         Me.SuspendLayout()
@@ -133,6 +136,7 @@ Partial Class frmXMLtoDTD
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtOutputDTD.BackColor = System.Drawing.Color.White
+        Me.txtOutputDTD.Font = New System.Drawing.Font("Courier New", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOutputDTD.Location = New System.Drawing.Point(6, 19)
         Me.txtOutputDTD.Multiline = True
         Me.txtOutputDTD.Name = "txtOutputDTD"
@@ -141,11 +145,41 @@ Partial Class frmXMLtoDTD
         Me.txtOutputDTD.Size = New System.Drawing.Size(698, 124)
         Me.txtOutputDTD.TabIndex = 0
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(280, 465)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 3
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(382, 465)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 4
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(475, 465)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 5
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'frmXMLtoDTD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(734, 537)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.grpbOutputDTD)
         Me.Controls.Add(Me.btnConvert)
         Me.Controls.Add(Me.grpbInputXML)
@@ -169,4 +203,7 @@ Partial Class frmXMLtoDTD
     Friend WithEvents txtOutputFilePath As TextBox
     Friend WithEvents txtOutputDTD As TextBox
     Friend WithEvents btnSavefile As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
 End Class
