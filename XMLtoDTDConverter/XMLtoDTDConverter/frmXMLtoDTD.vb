@@ -73,13 +73,19 @@
             ArrPrintedChildren.Clear()
             XMLdoc.Load(InputFilePath)
             sb = New System.Text.StringBuilder
+            txtOutputDTD.Text = ""
 
             If XMLdoc.HasChildNodes = True Then
                 For Each nd As Xml.XmlNode In XMLdoc.ChildNodes
                     If nd.NodeType = Xml.XmlNodeType.Element Then
-
+                        nodeProcess(nd)
                     End If
                 Next
+            End If
+
+            If printCData(ArrCDataNodes) = True Then
+                txtOutputDTD.Text = sb.ToString
+                btnBrowse.Enabled = True
             End If
         Catch ex As Exception
 
@@ -89,8 +95,26 @@
     Private Function nodeProcess(ByVal Node As Xml.XmlNode) As Boolean
         Try
             Dim nodeAcction As enumXMLActionType = getNode(Node)
-        Catch ex As Exception
 
+            Select Case nodeAcction
+                Case enumXMLActionType.Enum_PrintwChildren
+                    printNode(Node)
+                    For Each chd As Xml.XmlNode In Node.ChildNodes
+                        nodeProcess(chd)
+                    Next
+
+                Case enumXMLActionType.Enum_PrintAsCData
+                    Dim qualName As String = getCDataElement(Node)
+                    ArrCDataNodes.Add(qualName)
+
+                Case enumXMLActionType.Enum_Ignore
+
+                Case enumXMLActionType.Failed
+
+            End Select
+            Return True
+        Catch ex As Exception
+            Return False
         End Try
     End Function
 
