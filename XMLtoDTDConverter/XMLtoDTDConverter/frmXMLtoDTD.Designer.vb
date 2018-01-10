@@ -88,9 +88,7 @@ Partial Class frmXMLtoDTD
         '
         'ofdInputXMLFiles
         '
-        Me.ofdInputXMLFiles.FileName = "test.xml"
         Me.ofdInputXMLFiles.Filter = "XML Files|*.xml|All Files|*.*"
-        Me.ofdInputXMLFiles.InitialDirectory = "XMLTestFIle"
         Me.ofdInputXMLFiles.Title = "Open XML File"
         '
         'btnConvert
