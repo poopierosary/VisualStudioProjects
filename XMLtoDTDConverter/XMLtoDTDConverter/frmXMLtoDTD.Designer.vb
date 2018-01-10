@@ -54,7 +54,7 @@ Partial Class frmXMLtoDTD
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDisplayXML.BackColor = System.Drawing.Color.White
-        Me.txtDisplayXML.Font = New System.Drawing.Font("Courier New", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDisplayXML.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDisplayXML.Location = New System.Drawing.Point(6, 45)
         Me.txtDisplayXML.Multiline = True
         Me.txtDisplayXML.Name = "txtDisplayXML"
@@ -67,17 +67,20 @@ Partial Class frmXMLtoDTD
         'btnBrowse
         '
         Me.btnBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBrowse.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnBrowse.ForeColor = System.Drawing.Color.White
         Me.btnBrowse.Location = New System.Drawing.Point(498, 16)
         Me.btnBrowse.Name = "btnBrowse"
         Me.btnBrowse.Size = New System.Drawing.Size(206, 23)
         Me.btnBrowse.TabIndex = 1
         Me.btnBrowse.Text = "Browse File"
-        Me.btnBrowse.UseVisualStyleBackColor = True
+        Me.btnBrowse.UseVisualStyleBackColor = False
         '
         'txtInputPath
         '
         Me.txtInputPath.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtInputPath.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtInputPath.Location = New System.Drawing.Point(6, 19)
         Me.txtInputPath.Name = "txtInputPath"
         Me.txtInputPath.Size = New System.Drawing.Size(486, 20)
@@ -90,19 +93,21 @@ Partial Class frmXMLtoDTD
         '
         'btnConvert
         '
-        Me.btnConvert.Location = New System.Drawing.Point(169, 206)
+        Me.btnConvert.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnConvert.ForeColor = System.Drawing.Color.White
+        Me.btnConvert.Location = New System.Drawing.Point(239, 198)
         Me.btnConvert.Name = "btnConvert"
         Me.btnConvert.Size = New System.Drawing.Size(208, 23)
         Me.btnConvert.TabIndex = 1
         Me.btnConvert.Text = "Convert To DTD"
-        Me.btnConvert.UseVisualStyleBackColor = True
+        Me.btnConvert.UseVisualStyleBackColor = False
         '
         'grpbOutputDTD
         '
         Me.grpbOutputDTD.Controls.Add(Me.btnSavefile)
         Me.grpbOutputDTD.Controls.Add(Me.txtOutputFilePath)
         Me.grpbOutputDTD.Controls.Add(Me.txtOutputDTD)
-        Me.grpbOutputDTD.Location = New System.Drawing.Point(12, 248)
+        Me.grpbOutputDTD.Location = New System.Drawing.Point(12, 233)
         Me.grpbOutputDTD.Name = "grpbOutputDTD"
         Me.grpbOutputDTD.Size = New System.Drawing.Size(710, 187)
         Me.grpbOutputDTD.TabIndex = 2
@@ -111,17 +116,20 @@ Partial Class frmXMLtoDTD
         '
         'btnSavefile
         '
+        Me.btnSavefile.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnSavefile.ForeColor = System.Drawing.Color.White
         Me.btnSavefile.Location = New System.Drawing.Point(498, 159)
         Me.btnSavefile.Name = "btnSavefile"
         Me.btnSavefile.Size = New System.Drawing.Size(206, 23)
         Me.btnSavefile.TabIndex = 2
         Me.btnSavefile.Text = "Save DTD File"
-        Me.btnSavefile.UseVisualStyleBackColor = True
+        Me.btnSavefile.UseVisualStyleBackColor = False
         '
         'txtOutputFilePath
         '
         Me.txtOutputFilePath.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtOutputFilePath.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOutputFilePath.Location = New System.Drawing.Point(6, 161)
         Me.txtOutputFilePath.Name = "txtOutputFilePath"
         Me.txtOutputFilePath.Size = New System.Drawing.Size(486, 20)
@@ -133,7 +141,7 @@ Partial Class frmXMLtoDTD
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtOutputDTD.BackColor = System.Drawing.Color.White
-        Me.txtOutputDTD.Font = New System.Drawing.Font("Courier New", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtOutputDTD.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOutputDTD.Location = New System.Drawing.Point(6, 19)
         Me.txtOutputDTD.Multiline = True
         Me.txtOutputDTD.Name = "txtOutputDTD"
@@ -151,6 +159,7 @@ Partial Class frmXMLtoDTD
         Me.Controls.Add(Me.btnConvert)
         Me.Controls.Add(Me.grpbInputXML)
         Me.Name = "frmXMLtoDTD"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "XML to DTD Converter"
         Me.grpbInputXML.ResumeLayout(False)
         Me.grpbInputXML.PerformLayout()
