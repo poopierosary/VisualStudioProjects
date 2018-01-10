@@ -1,4 +1,6 @@
 ﻿Public Class frmXMLtoDTD
+
+
     Private InputFilePath As String
     Private OutputFilePath As String
     Private XMLdoc As New Xml.XmlDocument
@@ -37,6 +39,7 @@
                 ofdInputXMLFiles.InitialDirectory = InputDirectory
             End If
             ofdInputXMLFiles.ShowDialog()
+
         Catch ex As Exception
 
         End Try
@@ -51,9 +54,11 @@
                 LoadInputFile()
                 btnConvert.Enabled = True
             End If
-        Catch ex As Exception
 
+        Catch ex As Exception
+            'LogError(ex, "frmXMLconv OFD1_FileOk")
         End Try
+
     End Sub
 
     Private Sub LoadInputFile()
@@ -122,8 +127,8 @@
                 Case enumXMLActionType.Enum_Ignore
 
                 Case enumXMLActionType.Failed
-                    If MsgBox("Translation failed at Element: " & Node.Name & Chr(13) &
-                            "Would you like to continue processing?", MsgBoxStyle.YesNo, "Translation Failed") = MsgBoxResult.No Then
+                    If MsgBox("Testing: " & Node.Name & Chr(13) &
+                            "Testing", MsgBoxStyle.YesNo, "Testing Failed") = MsgBoxResult.No Then
                         Exit Function
                     End If
 
@@ -134,16 +139,16 @@
         End Try
     End Function
 
-    Private Function getNode(ByVal nd As Xml.XmlNode) As enumXMLActionType
+    Private Function getNode(ByVal node As Xml.XmlNode) As enumXMLActionType
         Try
             Dim isParentElemet As Boolean = False
 
-            If nd.HasChildNodes = True Then
+            If node.HasChildNodes = True Then
                 Dim numEle As Integer = 0
-                For Each node As Xml.XmlNode In nd.ChildNodes
-                    If node.NodeType = Xml.XmlNodeType.Element Then
-                        If node.HasChildNodes Then
-                            If node.FirstChild.NodeType = Xml.XmlNodeType.Element Then
+                For Each nde As Xml.XmlNode In node.ChildNodes
+                    If nde.NodeType = Xml.XmlNodeType.Element Then
+                        If nde.HasChildNodes Then
+                            If nde.FirstChild.NodeType = Xml.XmlNodeType.Element Then
                                 isParentElemet = True
                             End If
                         End If
@@ -160,7 +165,7 @@
                     getNode = enumXMLActionType.Enum_PrintAsCData
                 End If
             Else
-                If nd.NodeType = Xml.XmlNodeType.Element Then
+                If node.NodeType = Xml.XmlNodeType.Element Then
                     getNode = enumXMLActionType.Enum_PrintAsCData
                 Else
                     getNode = enumXMLActionType.Enum_Ignore
@@ -169,7 +174,7 @@
 
         Catch ex As Exception
             getNode = enumXMLActionType.Failed
-            sb.AppendLine("Somethign happened here" & nd.Name)
+            sb.AppendLine("Somethign happened here" & node.Name)
             sb.AppendLine()
         End Try
     End Function
@@ -217,20 +222,20 @@ TryAgain:   If ArrParentNodes.Contains(newName) = True Then
             Dim oldName As String = newName
             Dim cnt As Integer = 0
 
-TryAgain:   If ArrParentNodes.Contains(newName) = True Then
+TryAgain:   If ArrParentNodes.Contains(NewName) = True Then
                 cnt += 1
                 newName = oldName & cnt.ToString
                 GoTo TryAgain
             End If
-            'If ArrPrintedChildren.Contains(newName) = True Then
-            '    '  ArrPrintedChildren.Remove(newName)
-            '    getCDataElement = newName
-            'Else
-            '    cnt += 1
-            '    newName = oldName & cnt.ToString
-            '    GoTo TryAgain
+            If ArrPrintedChildren.Contains(newName) = True Then
+                ArrPrintedChildren.Remove(newName)
+                getCDataElement = newName
+            Else
+                cnt += 1
+                newName = oldName & cnt.ToString
+                GoTo TryAgain
+            End If
 
-            'End If
         Catch ex As Exception
             getCDataElement = ""
         End Try
@@ -242,49 +247,57 @@ TryAgain:   If ArrParentNodes.Contains(newName) = True Then
 
             If qualName <> "" Then
                 Dim childElement As String = ""
-                Dim prefix As String = "     "
-                Dim lineOne As String = String.Format("{0}{1}", "<!ELEMENT ", qualName)
-                Dim lineTwo As String = String.Format("{0}", "(")
-                Dim lineLast As String = String.Format("{0}", ")>")
+                Dim Prefix As String = "     "
+                Dim Line1 As String = String.Format("{0}{1}", "<!ELEMENT ", qualName)
+                Dim Line2 As String = String.Format("{0}", "(")
+                Dim LastLine As String = String.Format("{0}", ")>")
 
                 ArrAllElements.Add(qualName)
                 ArrParentNodes.Add(qualName)
 
-                sb.Append(lineOne)
-                sb.Append(lineTwo)
-                For Each chd As Xml.XmlNode In node.ChildNodes
-                    If chd.NodeType = Xml.XmlNodeType.Element Then
-                        Dim lineChd As String = String.Format("{0}{1}", prefix, childElement)
-                        sb.Append(lineChd)
-                        prefix = "    ,"
+                sb.AppendLine(Line1)
+                sb.AppendLine(Line2)
+                For Each cld As Xml.XmlNode In node.ChildNodes
+                    If cld.NodeType = Xml.XmlNodeType.Element Then
+                        childElement = getChildElement(cld)
+                        Dim LineChild As String = String.Format("{0}{1}", Prefix, childElement)
+                        sb.AppendLine(LineChild)
+                        Prefix = "    ,"
+
                         ArrAllElements.Add(childElement)
                         ArrPrintedChildren.Add(childElement)
                     End If
                 Next
-                sb.AppendLine(lineLast)
+                sb.AppendLine(LastLine)
                 sb.AppendLine()
 
                 Return True
             Else
                 Return False
             End If
+
         Catch ex As Exception
+
             Return False
         End Try
     End Function
 
     Private Function printCData(ByVal Arrl As ArrayList) As Boolean
+
         Try
-            Dim xmlField As String
+            Dim XMLfield As String
 
             For Each name As String In Arrl
-                xmlField = String.Format("{0}{1,-40}{2}", "<!ELEMENT ", name, " (#PCDATA)>")
-                sb.AppendLine(xmlField)
+                XMLfield = String.Format("{0}{1,-40}{2}", "<!ELEMENT ", name, " (#PCDATA)>")
+                sb.AppendLine(XMLfield)
             Next
+
             Return True
 
         Catch ex As Exception
+
             Return False
         End Try
+
     End Function
 End Class
