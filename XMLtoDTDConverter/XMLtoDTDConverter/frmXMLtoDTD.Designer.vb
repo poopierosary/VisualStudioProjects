@@ -32,6 +32,7 @@ Partial Class frmXMLtoDTD
         Me.btnSavefile = New System.Windows.Forms.Button()
         Me.txtOutputFilePath = New System.Windows.Forms.TextBox()
         Me.txtOutputDTD = New System.Windows.Forms.TextBox()
+        Me.sfdDTDfile = New System.Windows.Forms.SaveFileDialog()
         Me.grpbInputXML.SuspendLayout()
         Me.grpbOutputDTD.SuspendLayout()
         Me.SuspendLayout()
@@ -150,6 +151,11 @@ Partial Class frmXMLtoDTD
         Me.txtOutputDTD.Size = New System.Drawing.Size(698, 124)
         Me.txtOutputDTD.TabIndex = 0
         '
+        'sfdDTDfile
+        '
+        Me.sfdDTDfile.Filter = "XML DTD Files|*.DTD|All Files|*.*"
+        Me.sfdDTDfile.Title = "Save DTD Files"
+        '
         'frmXMLtoDTD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -179,4 +185,5 @@ Partial Class frmXMLtoDTD
     Friend WithEvents txtOutputFilePath As TextBox
     Friend WithEvents txtOutputDTD As TextBox
     Friend WithEvents btnSavefile As Button
+    Friend WithEvents sfdDTDfile As SaveFileDialog
 End Class

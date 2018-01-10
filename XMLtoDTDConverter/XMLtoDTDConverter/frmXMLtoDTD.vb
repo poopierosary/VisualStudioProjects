@@ -29,6 +29,7 @@
             Return False
 
         End Try
+
     End Function
 
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
@@ -300,4 +301,65 @@ TryAgain:   If ArrParentNodes.Contains(NewName) = True Then
         End Try
 
     End Function
+
+    Private Sub btnSavefile_Click(sender As Object, e As EventArgs) Handles btnSavefile.Click
+        Try
+            sfdDTDfile.Title = "DTD File"
+            If InputDirectory <> "" Then
+                sfdDTDfile.InitialDirectory = InputDirectory
+            End If
+            sfdDTDfile.ShowDialog()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub sfdDTDfile_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles sfdDTDfile.FileOk
+        Try
+            OutputFilePath = sfdDTDfile.FileName
+            txtOutputFilePath.Text = OutputFilePath
+            If OutputFilePath <> "" Then
+                If save() = True Then
+
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Function save() As Boolean
+        Try
+            If sfdDTDfile.FileName <> "" Then
+                save = saveDTDfile(OutputFilePath, txtOutputDTD.Text)
+            Else
+
+                save = False
+            End If
+
+        Catch ex As Exception
+            save = False
+        End Try
+    End Function
+
+    Public Function saveDTDfile(ByVal filePath As String, ByVal fileContent As String, Optional appendFile As Boolean = False) As Boolean
+        Dim writeTofile As System.IO.StreamWriter = Nothing
+        Dim writeTofile2 As System.IO.StreamWriter = Nothing
+        Try
+            writeTofile = New System.IO.StreamWriter(filePath, appendFile)
+
+            writeTofile.Write(fileContent)
+            Return True
+        Catch ex As Exception
+            Return False
+        Finally
+            If writeTofile IsNot Nothing Then
+                writeTofile.Close()
+            End If
+
+        End Try
+
+    End Function
+
+
 End Class
