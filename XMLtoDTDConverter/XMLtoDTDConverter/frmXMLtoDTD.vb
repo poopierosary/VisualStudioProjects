@@ -22,7 +22,9 @@
 
     Public Function OpenForm() As Boolean
         Try
+            btnOpenFile.Enabled = False
             btnConvert.Enabled = False
+            btnSavefile.Enabled = False
             Me.Show()
 
         Catch ex As Exception
@@ -361,5 +363,15 @@ TryAgain:   If ArrParentNodes.Contains(NewName) = True Then
 
     End Function
 
+    Private Sub btnOpenFile_Click(sender As Object, e As EventArgs) Handles btnOpenFile.Click
 
+        Try
+            If OutputFilePath <> "" Then
+                Dim OpenFile As New System.Diagnostics.Process
+                Process.Start(OutputFilePath)
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

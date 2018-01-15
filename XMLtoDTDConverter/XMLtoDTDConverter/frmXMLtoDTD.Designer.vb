@@ -33,6 +33,8 @@ Partial Class frmXMLtoDTD
         Me.txtOutputFilePath = New System.Windows.Forms.TextBox()
         Me.txtOutputDTD = New System.Windows.Forms.TextBox()
         Me.sfdDTDfile = New System.Windows.Forms.SaveFileDialog()
+        Me.btnOpenFile = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.grpbInputXML.SuspendLayout()
         Me.grpbOutputDTD.SuspendLayout()
         Me.SuspendLayout()
@@ -69,6 +71,7 @@ Partial Class frmXMLtoDTD
         '
         Me.btnBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBrowse.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnBrowse.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBrowse.ForeColor = System.Drawing.Color.White
         Me.btnBrowse.Location = New System.Drawing.Point(498, 16)
         Me.btnBrowse.Name = "btnBrowse"
@@ -95,6 +98,7 @@ Partial Class frmXMLtoDTD
         'btnConvert
         '
         Me.btnConvert.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnConvert.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnConvert.ForeColor = System.Drawing.Color.White
         Me.btnConvert.Location = New System.Drawing.Point(239, 229)
         Me.btnConvert.Name = "btnConvert"
@@ -110,7 +114,7 @@ Partial Class frmXMLtoDTD
         Me.grpbOutputDTD.Controls.Add(Me.txtOutputDTD)
         Me.grpbOutputDTD.Location = New System.Drawing.Point(12, 264)
         Me.grpbOutputDTD.Name = "grpbOutputDTD"
-        Me.grpbOutputDTD.Size = New System.Drawing.Size(710, 187)
+        Me.grpbOutputDTD.Size = New System.Drawing.Size(710, 223)
         Me.grpbOutputDTD.TabIndex = 2
         Me.grpbOutputDTD.TabStop = False
         Me.grpbOutputDTD.Text = "Output DTD File"
@@ -118,6 +122,7 @@ Partial Class frmXMLtoDTD
         'btnSavefile
         '
         Me.btnSavefile.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnSavefile.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSavefile.ForeColor = System.Drawing.Color.White
         Me.btnSavefile.Location = New System.Drawing.Point(498, 159)
         Me.btnSavefile.Name = "btnSavefile"
@@ -148,7 +153,7 @@ Partial Class frmXMLtoDTD
         Me.txtOutputDTD.Name = "txtOutputDTD"
         Me.txtOutputDTD.ReadOnly = True
         Me.txtOutputDTD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtOutputDTD.Size = New System.Drawing.Size(698, 124)
+        Me.txtOutputDTD.Size = New System.Drawing.Size(698, 134)
         Me.txtOutputDTD.TabIndex = 0
         '
         'sfdDTDfile
@@ -156,11 +161,37 @@ Partial Class frmXMLtoDTD
         Me.sfdDTDfile.Filter = "XML DTD Files|*.DTD|All Files|*.*"
         Me.sfdDTDfile.Title = "Save DTD Files"
         '
+        'btnOpenFile
+        '
+        Me.btnOpenFile.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnOpenFile.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOpenFile.ForeColor = System.Drawing.Color.White
+        Me.btnOpenFile.Location = New System.Drawing.Point(510, 456)
+        Me.btnOpenFile.Name = "btnOpenFile"
+        Me.btnOpenFile.Size = New System.Drawing.Size(206, 23)
+        Me.btnOpenFile.TabIndex = 3
+        Me.btnOpenFile.Text = "Open DTD File"
+        Me.btnOpenFile.UseVisualStyleBackColor = False
+        '
+        'btnClose
+        '
+        Me.btnClose.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnClose.ForeColor = System.Drawing.Color.White
+        Me.btnClose.Location = New System.Drawing.Point(641, 493)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(75, 32)
+        Me.btnClose.TabIndex = 4
+        Me.btnClose.Text = "Close"
+        Me.btnClose.UseVisualStyleBackColor = False
+        '
         'frmXMLtoDTD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(734, 537)
+        Me.Controls.Add(Me.btnClose)
+        Me.Controls.Add(Me.btnOpenFile)
         Me.Controls.Add(Me.grpbOutputDTD)
         Me.Controls.Add(Me.btnConvert)
         Me.Controls.Add(Me.grpbInputXML)
@@ -186,4 +217,6 @@ Partial Class frmXMLtoDTD
     Friend WithEvents txtOutputDTD As TextBox
     Friend WithEvents btnSavefile As Button
     Friend WithEvents sfdDTDfile As SaveFileDialog
+    Friend WithEvents btnOpenFile As Button
+    Friend WithEvents btnClose As Button
 End Class

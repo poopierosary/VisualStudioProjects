@@ -1,0 +1,87 @@
+<!ELEMENT catalog
+(
+     product
+)>
+
+<!ELEMENT product
+(
+     catalog_item
+    ,catalog_item
+)>
+
+<!ELEMENT catalog_item
+(
+     item_number
+    ,price
+    ,size
+    ,size
+)>
+
+<!ELEMENT size
+(
+     color_swatch
+    ,color_swatch
+)>
+
+<!ELEMENT size1
+(
+     color_swatch
+    ,color_swatch
+)>
+
+<!ELEMENT catalog_item1
+(
+     item_number
+    ,price
+    ,size2
+    ,size2
+    ,size2
+    ,size2
+)>
+
+<!ELEMENT size2
+(
+     color_swatch
+    ,color_swatch
+    ,color_swatch
+)>
+
+<!ELEMENT size3
+(
+     color_swatch
+    ,color_swatch
+    ,color_swatch
+    ,color_swatch
+)>
+
+<!ELEMENT size4
+(
+     color_swatch
+    ,color_swatch
+)>
+
+<!ELEMENT size5
+(
+     color_swatch
+    ,color_swatch
+)>
+
+<!ELEMENT item_number                              (#PCDATA)>
+<!ELEMENT price                                    (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT item_number                              (#PCDATA)>
+<!ELEMENT price                                    (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
+<!ELEMENT color_swatch                             (#PCDATA)>
