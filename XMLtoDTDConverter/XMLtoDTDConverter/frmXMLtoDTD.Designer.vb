@@ -158,7 +158,7 @@ Partial Class frmXMLtoDTD
         '
         'sfdDTDfile
         '
-        Me.sfdDTDfile.Filter = "XML DTD Files|*.DTD|All Files|*.*"
+        Me.sfdDTDfile.Filter = "XML DTD Files|*.dtd|All Files|*.*"
         Me.sfdDTDfile.Title = "Save DTD Files"
         '
         'btnOpenFile
