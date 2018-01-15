@@ -20,20 +20,6 @@
         Enum_Ignore = 3
     End Enum
 
-    Public Function OpenForm() As Boolean
-        Try
-            btnOpenFile.Enabled = False
-            btnConvert.Enabled = False
-            btnSavefile.Enabled = False
-            Me.Show()
-
-        Catch ex As Exception
-            Return False
-
-        End Try
-
-    End Function
-
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
 
         Try
