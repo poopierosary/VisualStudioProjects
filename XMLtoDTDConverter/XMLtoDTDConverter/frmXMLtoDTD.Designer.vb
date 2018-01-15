@@ -42,7 +42,7 @@ Partial Class frmXMLtoDTD
         Me.grpbInputXML.Controls.Add(Me.txtDisplayXML)
         Me.grpbInputXML.Controls.Add(Me.btnBrowse)
         Me.grpbInputXML.Controls.Add(Me.txtInputPath)
-        Me.grpbInputXML.Location = New System.Drawing.Point(12, 11)
+        Me.grpbInputXML.Location = New System.Drawing.Point(12, 42)
         Me.grpbInputXML.Name = "grpbInputXML"
         Me.grpbInputXML.Size = New System.Drawing.Size(710, 171)
         Me.grpbInputXML.TabIndex = 0
@@ -96,7 +96,7 @@ Partial Class frmXMLtoDTD
         '
         Me.btnConvert.BackColor = System.Drawing.Color.DodgerBlue
         Me.btnConvert.ForeColor = System.Drawing.Color.White
-        Me.btnConvert.Location = New System.Drawing.Point(239, 198)
+        Me.btnConvert.Location = New System.Drawing.Point(239, 229)
         Me.btnConvert.Name = "btnConvert"
         Me.btnConvert.Size = New System.Drawing.Size(208, 23)
         Me.btnConvert.TabIndex = 1
@@ -108,7 +108,7 @@ Partial Class frmXMLtoDTD
         Me.grpbOutputDTD.Controls.Add(Me.btnSavefile)
         Me.grpbOutputDTD.Controls.Add(Me.txtOutputFilePath)
         Me.grpbOutputDTD.Controls.Add(Me.txtOutputDTD)
-        Me.grpbOutputDTD.Location = New System.Drawing.Point(12, 233)
+        Me.grpbOutputDTD.Location = New System.Drawing.Point(12, 264)
         Me.grpbOutputDTD.Name = "grpbOutputDTD"
         Me.grpbOutputDTD.Size = New System.Drawing.Size(710, 187)
         Me.grpbOutputDTD.TabIndex = 2
