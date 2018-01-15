@@ -59,7 +59,7 @@
             End If
 
         Catch ex As Exception
-            'LogError(ex, "frmXMLconv OFD1_FileOk")
+
         End Try
 
     End Sub
@@ -373,5 +373,10 @@ TryAgain:   If ArrParentNodes.Contains(NewName) = True Then
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Me.Close()
+        Me.DialogResult = Windows.Forms.DialogResult.Abort
     End Sub
 End Class
