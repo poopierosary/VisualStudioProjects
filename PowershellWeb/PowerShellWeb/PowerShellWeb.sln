@@ -21,6 +21,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PowerShellWeb", "PowerShell
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "61663"
+		SlnRelativePath = "PowerShellWeb\"
 		DefaultWebSiteLanguage = "Visual Basic"
 	EndProjectSection
 EndProject
